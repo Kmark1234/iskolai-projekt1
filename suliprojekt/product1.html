@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Product 1</title>
+    <style>
+        
+        .notification {
+            display: none; 
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .notification button,
+        .notification a {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-left: 10px;
+            cursor: pointer;
+            text-decoration: none; 
+            border-radius: 4px; 
+        }
+        .notification a {
+            display: inline-block; 
+        }
+        .notification button:hover,
+        .notification a:hover {
+            background-color: darkred; 
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Products</a>
+                <ul class="dropdown-menu">
+                    <li><a href="product1.html">Product 1</a></li>
+                    <li><a href="product2.html">Product 2</a></li>
+                    <li><a href="product3.html">Product 3</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+                <a href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-text"> Cart</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<div class="product-detail">
+    <div class="product-image">
+        <img src="product1.jpg" alt="Product 1">
+    </div>
+    <div class="product-info">
+        <h1>Product 1</h1>
+        <p>Description of Product 1.</p>
+        <h2>$19.99</h2>
+        <a href="#" class="button" id="add-to-cart-btn">Add to Cart</a>
+    </div>
+</div>
+
+<div class="notification" id="notification">
+    Product added to cart! 
+    <button id="close-notification">Close</button>
+    <a href="cart.html" id="go-to-cart">Go to Cart</a>
+</div>
+
+<script>
+    document.getElementById("add-to-cart-btn").addEventListener("click", function(event) {
+        event.preventDefault(); 
+        document.getElementById("notification").style.display = "block"; 
+    });
+
+    document.getElementById("close-notification").addEventListener("click", function() {
+        document.getElementById("notification").style.display = "none"; 
+    });
+</script>
+
+<footer>
+    <p>&copy; 2024 Your Company</p>
+</footer>
+
+</body>
+</html>

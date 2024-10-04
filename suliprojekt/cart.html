@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cart</title>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Products</a>
+                <ul class="dropdown-menu">
+                    <li><a href="product1.html">Product 1</a></li>
+                    <li><a href="product2.html">Product 2</a></li>
+                    <li><a href="product3.html">Product 3</a></li>
+                    <li><a href="products.html">All Products</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+                <a href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-text"> Cart</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<div class="cart-container">
+    <h1>Your Cart</h1>
+    <div class="cart-item">
+        <img src="product1.jpg" alt="Product 1">
+        <h2>Product 1</h2>
+        <h2>$10.00</h2>
+        <select class="quantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </div>
+    <div class="cart-item">
+        <img src="product2.jpg" alt="Product 2">
+        <h2>Product 2</h2>
+        <h2>$20.00</h2>
+        <select class="quantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </div>
+    <div class="cart-item">
+        <img src="product3.jpg" alt="Product 3">
+        <h2>Product 3</h2>
+        <h2>$30.00</h2>
+        <select class="quantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </div>
+
+    <h2>Total: <span id="total-price">$0.00</span></h2>
+    <button class="button checkout">Checkout</button>
+</div>
+
+<footer>
+    <p>&copy; 2024 NutriJoy</p>
+</footer>
+
+<script>
+    const cartItems = document.querySelectorAll('.cart-item');
+    const totalPriceElement = document.getElementById('total-price');
+    
+    function calculateTotal() {
+        let total = 0;
+        cartItems.forEach(item => {
+            const price = parseFloat(item.querySelector('h2:nth-of-type(2)').textContent.replace('$', ''));
+            const quantity = parseInt(item.querySelector('.quantity').value);
+            total += price * quantity;
+        });
+        totalPriceElement.textContent = `$${total.toFixed(2)}`;
+    }
+
+    cartItems.forEach(item => {
+        item.querySelector('.quantity').addEventListener('change', calculateTotal);
+    });
+
+    calculateTotal();
+</script>
+
+</body>
+</html>
